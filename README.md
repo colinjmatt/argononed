@@ -17,7 +17,7 @@ There are mainly three changes compared to the original:
 
 ```bash
 cd /tmp
-git clone -b pkg https://github.com/a-usov/argond.git
+git clone -b pkg https://github.com/colinjmatt/argond.git
 cd argond
 makepkg -si
 ```
@@ -25,7 +25,7 @@ makepkg -si
 The [python--gpiozero](https://aur.archlinux.org/packages/python-gpiozero) dependancy has to be installed from the AUR. For example using your favourite AUR helper.
 
 ```bash
-paru -S python-raspberry-gpio
+paru -S python-gpiozero
 ```
 
 ## Usage
@@ -37,10 +37,13 @@ Systemd service argond has to be started after install.
 systemctl enable argond --now
 ```
 
-The fan configuration can be edited in the [python script](https://github.com/a-usov/argond/blob/master/argond.py#L45) in the format `["temperature=fanspeed", ...]`.
+The fan configuration can be edited in the [python script](https://github.com/colinjmatt/argond/blob/master/argond.py#L45) in the format `["temperature=fanspeed", ...]`.
 Afterwards, the service has to be reloaded.
 
 ## Contribution
+Has been modified from [https://github.com/a-usov/argond](https://github.com/a-usov/argond)
+
+which in turn
 
 Has been modified from [Argon-one-case-ubuntu-20.04](https://github.com/meuter/argon-one-case-ubuntu-20.04) by Cédric Meuter.
 
