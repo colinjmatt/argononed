@@ -7,7 +7,7 @@ arch=(aarch64)
 url="https://github.com/colinjmatt/$pkgname"
 depends=(i2c-tools python python-gpiozero)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/colinjmatt/$pkgname/archive/refs/heads/main.tar.gz")
+source=("https://github.com/colinjmatt/$pkgname/archive/refs/tags/v1.0.tar.gz")
 sha256sums=(8e00fdc821e8b74d905232ad77013d4bd2178e41d6bb1991331f3cf8478bfe7c)
 
 package() {
