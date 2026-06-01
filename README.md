@@ -25,7 +25,7 @@ makepkg -si
 The [python-raspberry-gpio](https://aur.archlinux.org/packages/python-raspberry-gpio) dependancy has to be installed from the AUR. For example using your favourite AUR helper.
 
 ```bash
-yay -S python-raspberry-gpio
+paru -S python-raspberry-gpio
 ```
 
 ## Usage
