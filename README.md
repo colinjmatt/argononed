@@ -22,7 +22,7 @@ cd argond
 makepkg -si
 ```
 
-The [python-raspberry-gpio](https://aur.archlinux.org/packages/python-raspberry-gpio) dependancy has to be installed from the AUR. For example using your favourite AUR helper.
+The [python--gpiozero](https://aur.archlinux.org/packages/python-gpiozero) dependancy has to be installed from the AUR. For example using your favourite AUR helper.
 
 ```bash
 paru -S python-raspberry-gpio
