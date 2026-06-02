@@ -17,7 +17,7 @@ There are mainly three changes compared to the original:
 
 ```bash
 cd /tmp
-git clone -b pkg https://github.com/colinjmatt/argond.git
+git clone https://github.com/colinjmatt/argond.git
 cd argond
 makepkg -si
 ```
