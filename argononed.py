@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
+import os
+
+# Trick gpiozero into thinking it sees a Raspberry Pi 4 Model B
+# bypassing the mainline kernel's missing cpuinfo data.
+os.environ['PI_REVISION'] = 'c03111'
+
 import smbus
 from gpiozero import Button
-import os
 import time
 from threading import Thread
 
