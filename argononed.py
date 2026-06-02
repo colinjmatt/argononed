@@ -122,6 +122,63 @@ if __name__ == "__main__":
         while True:
             time.sleep(60)
     except KeyboardInterrupt:
+        pass                try:
+                    tempval = float(tmppair[0])
+                    fanval = int(float(tmppair[1]))
+                    if 0 <= tempval <= 100 and 0 <= fanval <= 100:
+                        newconfig.append("{:5.1f}={}".format(tempval, fanval))
+                except ValueError:
+                    continue
+        if len(newconfig) > 0:
+            newconfig.sort(reverse=True)
+    except Exception:
+        return []
+    return newconfig
+
+def get_temp():
+    try:
+        with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+            return float(f.read().strip()) / 1000.0
+    except Exception:
+        return 0.0
+
+def temp_check():
+    fanconfig = ["65=100", "60=55", "55=10"]
+    tmpconfig = load_config("/opt/argonone/argononed.conf")
+    if len(tmpconfig) > 0:
+        fanconfig = tmpconfig
+        
+    address = 0x1a
+    prevblock = -1
+    
+    while True:
+        val = get_temp()
+        block = get_fanspeed(val, fanconfig)
+        
+        # Hysteresis: wait before dropping fan speed
+        if block < prevblock:
+            time.sleep(30) 
+            
+        prevblock = block
+        
+        if bus is not None:
+            try:
+                bus.write_byte_data(address, 0, block)
+            except IOError:
+                pass
+                
+        time.sleep(30)
+
+if __name__ == "__main__":
+    try:
+        t1 = Thread(target=shutdown_check, daemon=True)
+        t2 = Thread(target=temp_check, daemon=True)
+        t1.start()
+        t2.start()
+        
+        while True:
+            time.sleep(60)
+    except KeyboardInterrupt:
         pass                except ValueError:
                     continue
         if len(newconfig) > 0:
