@@ -1,4 +1,4 @@
-pkgname=argond
+pkgname=argononed
 pkgdesc='Script for the Argon One Raspberry Pi 4 case.'
 pkgver='latest'
 pkgrel='1'
@@ -18,8 +18,8 @@ package() {
         cd "$srcdir/$pkgname-master"
         
         install -Dm755 "argononed.py" "$pkgdir/opt/argonone/bin/argononed.py"
-        install -Dm755 "argonone-config" "$pkgdir/opt/argonone/bin/argonone-config"
+        install -Dm755 "argonone-config" "$pkgdir/usr/bin/argonone-config"
         install -Dm644 "argononed.conf" "$pkgdir/opt/argonone/argononed.conf"
         install -Dm755 "argononed-poweroff.py" "$pkgdir/usr/lib/systemd/system-shutdown/$pkgname-poweroff"
-        install -Dm644 "argononed.service" "$pkgdir/usr/lib/systemd/system/argond.service"
+        install -Dm644 "argononed.service" "$pkgdir/usr/lib/systemd/system/argononed.service"
 }
